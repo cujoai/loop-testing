@@ -94,17 +94,17 @@ local function asserterror(message, pattern)
 end
 
 assert("one", is("other"))
-asserterror('Exception: expected same values ("one" was not "other")')
+asserterror('expected same values ("one" was not "other")')
 assert("other", NOT(is("other")))
-asserterror('Exception: not expected same values (value was "other")')
+asserterror('not expected same values (value was "other")')
 assert(1, equal(0))
-asserterror('Exception: expected equal values (1 was not equal to 0)')
+asserterror('expected equal values (1 was not equal to 0)')
 assert(0, NOT(equal(0)))
-asserterror('Exception: not expected equal values (0 was equal to 0)')
+asserterror('not expected equal values (0 was equal to 0)')
 assert(1, like(0))
-asserterror('Exception: expected values alike (mismatch at "value: not matched", 1 was not like 0)')
+asserterror('expected values alike (mismatch at "value: not matched", 1 was not like 0)')
 assert(0, NOT(like(0)))
-asserterror('Exception: not expected values alike (0 was like 0)')
+asserterror('not expected values alike (0 was like 0)')
 
 do
 	local f = {}
@@ -113,15 +113,16 @@ do
 		f[i] = function() return t,f,c,u end
 	end
 	assert(f[1], like(f[2]))
-	asserterror('^Exception: expected values alike %(mismatch at "value%.t%.i: not matched", function: 0x[a-f0-9]+ was not like function: 0x[a-f0-9]+%)', true)
+	asserterror('^expected values alike %(mismatch at "value%.t%.i: not matched", function: 0x[a-f0-9]+ was not like function: 0x[a-f0-9]+%)', true)
 end
 
 assert("123", type("number"))
-asserterror('Exception: expected value of type (type of "123" was "string", not "number")')
+asserterror('expected value of type (type of "123" was "string", not "number")')
 assert(123, NOT(type("number")))
-asserterror('Exception: not expected value of type (type of 123 was "number")')
+asserterror('not expected value of type (type of 123 was "number")')
 
 assert("no number", match("%d+"))
-asserterror('Exception: expected string pattern match ("no number" did not match "%d+")')
+asserterror('expected string pattern match ("no number" did not match "%d+")')
 assert("number 123!", NOT(match("%d+")))
-asserterror('Exception: not expected string pattern match ("number 123!" matched "%d+" at position 8..10)')
+asserterror('not expected string pattern match ("number 123!" matched "%d+" at position 8..10)')
+
