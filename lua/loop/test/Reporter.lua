@@ -56,7 +56,7 @@ function Reporter:ended(names, success, message)
 	
 	if #self == 0 then
 		if self.name then self.output:write("[", self.name, "]\t") end
-		self.output:write(Summary:format(100*self.success/self.count, self.success, self.count))
+		self.output:write(Summary:format(100*self.success//self.count, self.success, self.count))
 	end
 	self.output:flush()
 end
